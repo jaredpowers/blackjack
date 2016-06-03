@@ -1,11 +1,24 @@
+require_relative "./card.rb"
+
 class Deck
-  attr_reader :suits
+  attr_accessor :cards
+
   def initialize
+    @cards = []
     suits = [:hearts, :diamonds, :spades, :clubs]
-    @suits.each do |suit|
+    suits.each do |suit|
       (2..14).each do |value|
-        @cards << Card.new(suite, value)
+        @cards << Card.new(suit, value)
       end
     end
   end
+
+  def shuffle
+    @cards.shuffle!
   end
+
+  def draw
+    @cards.shift
+  end
+
+end
